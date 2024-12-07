@@ -1,0 +1,13 @@
+server:
+  port: 7002
+  error:
+    include-message: always
+
+spring:
+  application:
+    name: recommendation-service
+
+logging:
+  level:
+    root: INFO
+    se.magnus.microservices: DEBUG

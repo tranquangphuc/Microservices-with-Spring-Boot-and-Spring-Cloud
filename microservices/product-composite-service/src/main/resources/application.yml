@@ -1,0 +1,41 @@
+server:
+  port: 7000
+  error:
+    include-message: always
+
+spring:
+  application:
+    name: product-composite-product
+  cloud:
+    openfeign:
+      client:
+        config:
+          product-service:
+            url: http://localhost:7001
+          recommendation-service:
+            url: http://localhost:7002
+          review-service:
+            url: http://localhost:7003
+      circuitbreaker:
+        enabled: true
+        alphanumeric-ids:
+          enabled: true
+    circuitbreaker:
+      resilience4j:
+        enabled: true
+
+app:
+  product-service:
+    host: localhost
+    port: 7001
+  recommendation-service:
+    host: localhost
+    port: 7002
+  review-service:
+    host: localhost
+    port: 7003
+
+logging:
+  level:
+    root: INFO
+    se.magnus.microservices: DEBUG

@@ -1,0 +1,13 @@
+server:
+  port: 7001
+  error:
+    include-message: always
+
+spring:
+  application:
+    name: product-service
+
+logging:
+  level:
+    root: INFO
+    se.magnus.microservices: DEBUG
