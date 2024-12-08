@@ -1,0 +1,19 @@
+spring:
+  cloud:
+    openfeign:
+      client:
+        config:
+          product-service:
+            url: http://product:7001
+          recommendation-service:
+            url: http://recommendation:7002
+          review-service:
+            url: http://review:7003
+
+app:
+  product-service:
+    host: product-service
+  recommendation-service:
+    host: recommendation-service
+  review-service:
+    host: review-service
