@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ProductCompositeApplication<product-composite-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "se.magnus.microservices.composite.product.ProductCompositeApplication",
+            "projectName": "product-composite-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

@@ -6,8 +6,20 @@ server:
 spring:
   application:
     name: product-service
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: product-db
 
 logging:
   level:
     root: INFO
     se.magnus.microservices: DEBUG
+
+---
+spring.config.activate.on-profile: docker
+
+server.port: 8080
+
+spring.data.mongodb.host: mongodb
