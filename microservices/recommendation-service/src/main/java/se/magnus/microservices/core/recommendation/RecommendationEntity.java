@@ -5,6 +5,9 @@ import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import lombok.Data;
+
+@Data
 @Document(collection = "recommendations")
 @CompoundIndex(name = "prod-red-id", unique = true, def = "{'productId': 1, 'recommendationId': 1}")
 public class RecommendationEntity {
@@ -24,59 +27,14 @@ public class RecommendationEntity {
 
     private String content;
 
-    public String getId() {
-        return id;
+    public RecommendationEntity() {
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
-
-    public int getProductId() {
-        return productId;
-    }
-
-    public void setProductId(int productId) {
+    public RecommendationEntity(int productId, int recommendationId, String author, int rating, String content) {
         this.productId = productId;
-    }
-
-    public int getRecommendationId() {
-        return recommendationId;
-    }
-
-    public void setRecommendationId(int recommendationId) {
         this.recommendationId = recommendationId;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
         this.author = author;
-    }
-
-    public int getRating() {
-        return rating;
-    }
-
-    public void setRating(int rating) {
         this.rating = rating;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
         this.content = content;
     }
 
