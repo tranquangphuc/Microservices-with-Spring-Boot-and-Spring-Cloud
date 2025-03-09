@@ -73,15 +73,19 @@ public class PersistenceTests extends MongoDbTestBase {
 
     @Test
     void optimisticLockError() {
+        // Store the saved entity in two separate entity objects
         RecommendationEntity entity1 = repository.findById(savedEntity.getId()).get();
         RecommendationEntity entity2 = repository.findById(savedEntity.getId()).get();
 
+        // Update the entity using the first entity object
         entity1.setAuthor("a1");
         repository.save(entity1);
 
+        // Update the entity using the second entity object.
         entity2.setAuthor("a2");
         assertThrows(OptimisticLockingFailureException.class, () -> repository.save(entity2));
 
+        // Get the updated entity from the database and verify its new sate
         RecommendationEntity updateEntity = repository.findById(savedEntity.getId()).get();
         assertEquals(1, (long) updateEntity.getVersion());
         assertEquals("a1", updateEntity.getAuthor());
