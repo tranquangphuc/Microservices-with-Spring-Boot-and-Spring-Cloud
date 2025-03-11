@@ -7,7 +7,7 @@ import org.testcontainers.containers.MySQLContainer;
 
 public abstract class MysqlTestBase {
 
-    private static JdbcDatabaseContainer database = new MySQLContainer<>("mysql:8.0.32").withStartupTimeoutSeconds(300);
+    private static JdbcDatabaseContainer<?> database = new MySQLContainer<>("mysql:8.0.32").withStartupTimeoutSeconds(300);
 
     static {
         database.start();

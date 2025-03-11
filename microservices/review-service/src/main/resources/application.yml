@@ -15,6 +15,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update # Strongly recommend to set this property to "none" in a production environment!
+    database-platform: org.hibernate.dialect.MySQLDialect
 
 logging:
   level:

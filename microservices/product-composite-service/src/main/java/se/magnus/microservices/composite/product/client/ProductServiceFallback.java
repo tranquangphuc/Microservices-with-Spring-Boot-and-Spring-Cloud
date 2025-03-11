@@ -35,6 +35,21 @@ public class ProductServiceFallback implements FallbackFactory<ProductService> {
                 return null;
             }
 
+            @Override
+            public Product createProduct(Product product) {
+                if (cause instanceof FeignException.UnprocessableEntity exception) {
+                    throw new InvalidInputException(getErrorMessage(exception));
+                }
+                return null;
+            }
+
+            @Override
+            public void deleteProduct(int productId) {
+                if (cause instanceof FeignException.UnprocessableEntity exception) {
+                    throw new InvalidInputException(getErrorMessage(exception));
+                }
+            }
+
         };
     }
 
