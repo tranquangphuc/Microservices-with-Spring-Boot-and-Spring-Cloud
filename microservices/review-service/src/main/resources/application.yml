@@ -12,10 +12,6 @@ spring:
     password: pwd
     hikari:
       initialization-fail-timeout: 60000
-  jpa:
-    hibernate:
-      ddl-auto: update # Strongly recommend to set this property to "none" in a production environment!
-    database-platform: org.hibernate.dialect.MySQLDialect
 
 logging:
   level:
@@ -23,6 +19,14 @@ logging:
     se.magnus.microservices: DEBUG
     org.hibernate.SQL: DEBUG
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+---
+spring.config.activate.on-profile: dev
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
 
 ---
 spring.config.activate.on-profile: docker
